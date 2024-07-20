@@ -1,10 +1,3 @@
-//
-//  SetScheduleSheetView.swift
-//  C2
-//
-//  Created by T Krobot on 20/7/24.
-//
-
 import SwiftUI
 
 struct SetScheduleSheetView: View {

@@ -15,6 +15,7 @@
 		3CEB7F602C4B572600BDC3AE /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F5F2C4B572600BDC3AE /* ShopView.swift */; };
 		3CEB7F622C4B573000BDC3AE /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */; };
 		3CEB7F642C4B573500BDC3AE /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F632C4B573500BDC3AE /* PetView.swift */; };
+		D955C21A2C4B5DC30074909E /* SetScheduleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		3CEB7F5F2C4B572600BDC3AE /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		3CEB7F632C4B573500BDC3AE /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
+		D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetScheduleSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				3CEB7F5D2C4B571E00BDC3AE /* HomeView.swift */,
 				3CEB7F5F2C4B572600BDC3AE /* ShopView.swift */,
 				3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */,
+				D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */,
 				3CEB7F632C4B573500BDC3AE /* PetView.swift */,
 				3CEB7F532C4B55D600BDC3AE /* Assets.xcassets */,
 				3CEB7F552C4B55D600BDC3AE /* Preview Content */,
@@ -151,6 +154,7 @@
 			files = (
 				3CEB7F642C4B573500BDC3AE /* PetView.swift in Sources */,
 				3CEB7F622C4B573000BDC3AE /* ScheduleView.swift in Sources */,
+				D955C21A2C4B5DC30074909E /* SetScheduleSheetView.swift in Sources */,
 				3CEB7F5E2C4B571E00BDC3AE /* HomeView.swift in Sources */,
 				3CEB7F522C4B55D400BDC3AE /* ContentView.swift in Sources */,
 				3CEB7F602C4B572600BDC3AE /* ShopView.swift in Sources */,
