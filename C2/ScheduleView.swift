@@ -3,7 +3,7 @@ import SwiftUI
 struct ScheduledItem: Identifiable {
     let id = UUID()
     let date: String
-    let contents: [String]
+    // let contents: [] 
 }
 
 struct ScheduleView: View {
@@ -12,7 +12,7 @@ struct ScheduleView: View {
             
             // list of substances
             List {
-                
+                Text("Hello world")
             }
             
             
@@ -30,6 +30,9 @@ struct ScheduleView: View {
                     }
                 }
             }
+            
+            Text("blablabla")
+                .navigationTitle("again??!!")
         }
     }
 }
