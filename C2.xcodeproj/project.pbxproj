@@ -65,8 +65,7 @@
 				3CEB7F512C4B55D400BDC3AE /* ContentView.swift */,
 				3CEB7F5D2C4B571E00BDC3AE /* HomeView.swift */,
 				3CEB7F5F2C4B572600BDC3AE /* ShopView.swift */,
-				3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */,
-				D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */,
+				D9CFBB792C5231F400DE3CA1 /* Schedule */,
 				3CEB7F632C4B573500BDC3AE /* PetView.swift */,
 				3CEB7F532C4B55D600BDC3AE /* Assets.xcassets */,
 				3CEB7F552C4B55D600BDC3AE /* Preview Content */,
@@ -80,6 +79,15 @@
 				3CEB7F562C4B55D600BDC3AE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D9CFBB792C5231F400DE3CA1 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */,
+				D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
