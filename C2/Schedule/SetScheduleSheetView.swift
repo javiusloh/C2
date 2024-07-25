@@ -3,6 +3,7 @@ import SwiftUI
 struct SetScheduleSheetView: View {
     @State private var scheduledDate: Date = Date.now
     @State private var excerciseName: String = ""
+    @Binding var scheduledExercises: [ScheduledExercise]
     
     var body: some View {
         NavigationStack {
@@ -16,11 +17,11 @@ struct SetScheduleSheetView: View {
                 
                 Spacer()
                 Spacer()
+                Spacer()
                 
                 Button {
-                    // add function here
-                    // need to find a data struct to store
-                    // excerciseName, scheduledDate
+//                    let newExercise = ScheduledExercise(exerciseName: excerciseName, scheduledDate: scheduledDate)
+//                    scheduledExercises.append(newExercise)
                 } label: {
                     Text("Save")
                         .frame(maxWidth: .infinity, maxHeight: 40)
