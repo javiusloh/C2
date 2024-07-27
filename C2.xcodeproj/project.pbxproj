@@ -16,6 +16,7 @@
 		3CEB7F622C4B573000BDC3AE /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */; };
 		3CEB7F642C4B573500BDC3AE /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F632C4B573500BDC3AE /* PetView.swift */; };
 		D955C21A2C4B5DC30074909E /* SetScheduleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */; };
+		D9AB77642C54973000DDD72B /* GoalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AB77632C54973000DDD72B /* GoalSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		3CEB7F632C4B573500BDC3AE /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
 		D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetScheduleSheetView.swift; sourceTree = "<group>"; };
+		D9AB77632C54973000DDD72B /* GoalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		3CEB7F4E2C4B55D400BDC3AE /* C2 */ = {
 			isa = PBXGroup;
 			children = (
+				D9AB77632C54973000DDD72B /* GoalSettingsView.swift */,
 				3CEB7F4F2C4B55D400BDC3AE /* C2App.swift */,
 				3CEB7F512C4B55D400BDC3AE /* ContentView.swift */,
 				3CEB7F5D2C4B571E00BDC3AE /* HomeView.swift */,
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9AB77642C54973000DDD72B /* GoalSettingsView.swift in Sources */,
 				3CEB7F642C4B573500BDC3AE /* PetView.swift in Sources */,
 				3CEB7F622C4B573000BDC3AE /* ScheduleView.swift in Sources */,
 				D955C21A2C4B5DC30074909E /* SetScheduleSheetView.swift in Sources */,

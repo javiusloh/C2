@@ -18,6 +18,19 @@ struct ContentView: View {
     @State var vegetable = 0
     @State var daysLeft = 0
     var body: some View {
+        
+        TabView{
+            HomeView()
+                .tabItem{
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            ShopView()
+                .tabItem{
+                    Image(systemName: "cart")
+                    Text("Shop")
+                }
+        }
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
@@ -25,9 +38,10 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        
     }
-}
+    
+    #Preview {
+        ContentView()
+    }
 
-#Preview {
-    ContentView()
-}
