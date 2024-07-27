@@ -16,6 +16,7 @@
 		3CEB7F622C4B573000BDC3AE /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */; };
 		3CEB7F642C4B573500BDC3AE /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB7F632C4B573500BDC3AE /* PetView.swift */; };
 		D955C21A2C4B5DC30074909E /* SetScheduleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */; };
+		D9BD1B9D2C5495E900D90340 /* StepCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BD1B9C2C5495E900D90340 /* StepCounterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,9 @@
 		3CEB7F612C4B573000BDC3AE /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		3CEB7F632C4B573500BDC3AE /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
 		D955C2192C4B5DC30074909E /* SetScheduleSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetScheduleSheetView.swift; sourceTree = "<group>"; };
+		D9BD1B9A2C5494AB00D90340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D9BD1B9B2C54956B00D90340 /* C2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = C2.entitlements; sourceTree = "<group>"; };
+		D9BD1B9C2C5495E900D90340 /* StepCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,11 @@
 		3CEB7F4E2C4B55D400BDC3AE /* C2 */ = {
 			isa = PBXGroup;
 			children = (
+				D9BD1B9B2C54956B00D90340 /* C2.entitlements */,
+				D9BD1B9A2C5494AB00D90340 /* Info.plist */,
 				3CEB7F4F2C4B55D400BDC3AE /* C2App.swift */,
 				3CEB7F512C4B55D400BDC3AE /* ContentView.swift */,
+				D9BD1B9C2C5495E900D90340 /* StepCounterView.swift */,
 				3CEB7F5D2C4B571E00BDC3AE /* HomeView.swift */,
 				3CEB7F5F2C4B572600BDC3AE /* ShopView.swift */,
 				D9CFBB792C5231F400DE3CA1 /* Schedule */,
@@ -167,6 +174,7 @@
 				3CEB7F522C4B55D400BDC3AE /* ContentView.swift in Sources */,
 				3CEB7F602C4B572600BDC3AE /* ShopView.swift in Sources */,
 				3CEB7F502C4B55D400BDC3AE /* C2App.swift in Sources */,
+				D9BD1B9D2C5495E900D90340 /* StepCounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,12 +305,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = C2/C2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"C2/Preview Content\"";
 				DEVELOPMENT_TEAM = VYN5JB9N88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = C2/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps!";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please, give your permission to read your steps!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -326,12 +338,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = C2/C2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"C2/Preview Content\"";
 				DEVELOPMENT_TEAM = VYN5JB9N88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = C2/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps!";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please, give your permission to read your steps!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
