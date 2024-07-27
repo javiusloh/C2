@@ -26,11 +26,13 @@ struct HomeView: View {
                     .font(.system(size: 20))
                 Text("STEPS")
                     .frame(maxWidth: .infinity)
+                    .foregroundStyle(Color.gray)
                 Text("DISTANCE")
                     .frame(maxWidth: .infinity)
+                    .foregroundStyle(Color.gray)
             }
             
-            HStack {
+            HStack (){
                 Text("Darshan")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -47,7 +49,7 @@ struct HomeView: View {
 
             }
             HStack {
-                Text("Javious")
+                Text("Javius")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
@@ -96,7 +98,7 @@ struct HomeView: View {
 
         }
             HStack {
-                Text("John")
+                Text("Max")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
