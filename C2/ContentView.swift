@@ -18,16 +18,23 @@ struct ContentView: View {
     @State var vegetable = 0
     @State var daysLeft = 0
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        TabView{
+            HomeView()
+                .tabItem{
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            ShopView()
+                .tabItem{
+                    Image(systemName: "cart")
+                    Text("Shop")
+                }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
