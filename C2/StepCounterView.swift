@@ -13,7 +13,7 @@ struct StepCounterView: View {
     
     var body: some View {
         VStack {
-            if let error = viewModel.error {
+            if viewModel.error != nil {
                 ContentUnavailableView("No Steps Data", systemImage: "figure.walk")
             } else {
                 Image(systemName: "figure.walk")
@@ -32,10 +32,6 @@ struct StepCounterView: View {
             try? await viewModel.fetchTodaySteps()
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
 
 enum StepCounterError: Error {
@@ -90,4 +86,8 @@ final class StepCounterViewModel: ObservableObject {
             }
         }
     }
+}
+
+#Preview {
+    StepCounterView()
 }

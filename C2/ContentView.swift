@@ -18,11 +18,17 @@ struct ContentView: View {
     @State var vegetable = 0
     @State var daysLeft = 0
     var body: some View {
-        VStack {
+        NavigationStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            
+            NavigationLink {
+                StepCounterView()
+            } label: {
+                Text("StepCounterView")
+            }
         }
         .padding()
     }
