@@ -31,17 +31,10 @@ struct ContentView: View {
                     Text("Shop")
                 }
         }
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-        
     }
-    
-    #Preview {
-        ContentView()
-    }
+}
+
+#Preview {
+    ContentView()
+}
 
