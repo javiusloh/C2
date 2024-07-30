@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var todaySteps = 0
-    @State var todayDistance = 0.0
-    @State var totalSteps = 0
-    @State var totalDistance = 0.0
     @State var stepsGoal = 0
+    @AppStorage ("stepCount") var stepCount = 0
     @State var distanceGoal = 0.0
-    @State var fish = 0
-    @State var vegetable = 0
-    @State var daysLeft = 0
+    
+    @StateObject private var viewModel = StepCounterViewModel()
     var body: some View {
         
         TabView{
-            HomeView()
+            HomeView(stepCount: $viewModel.steps)
                 .tabItem{
                     Image(systemName: "house")
                     Text("Home")
                 }
-            ShopView()
+            ShopView(stepCount: $viewModel.steps)
                 .tabItem{
                     Image(systemName: "cart")
                     Text("Shop")
                 }
+        }
+        .task {
+            await viewModel.requestAuth()
+            try? await viewModel.fetchTodaySteps()
         }
     }
 }

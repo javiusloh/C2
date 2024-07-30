@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Binding var stepCount: Int
     var body: some View {
         ScrollView{
+
             
+            StepCounterView()
             /// LEADERBOARD CODE
             Text("Leaderboard")
                 .bold()
@@ -66,22 +69,6 @@ struct HomeView: View {
 
             }
             HStack {
-                Text("You")
-                    .frame(maxWidth: .infinity)
-                    .font(.system(size: 17))
-                    .padding()
-                
-                Text("6924")
-                    .frame(maxWidth: .infinity)
-                    .font(.system(size: 17))
-
-                Text("2.4")
-                    .frame(maxWidth: .infinity)
-                    .font(.system(size: 17))
-
-
-            }
-            HStack {
                 Text("John")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -111,8 +98,23 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
             }
+            
+            HStack {
+                Text("You")
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 17))
+                    .padding()
+                
+                Text("\(stepCount)")
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 17))
 
-    
+                Text("0.0")
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 17))
+
+
+            }
             
             
             
@@ -122,7 +124,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(stepCount: .constant(6924))
 }
 
 

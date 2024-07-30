@@ -16,14 +16,36 @@ struct StepCounterView: View {
             if viewModel.error != nil {
                 ContentUnavailableView("No Steps Data", systemImage: "figure.walk")
             } else {
-                Image(systemName: "figure.walk")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 100)
-                    .foregroundStyle(.red)
-                
-                Text(viewModel.steps)
-                    .font(.largeTitle)
+                HStack{
+                    ZStack{
+                        VStack{
+                            Text("\(viewModel.steps)")
+                                .font(.largeTitle)
+                            Text("steps")
+                                .foregroundStyle(.gray)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 140)
+                        .foregroundStyle(.blue)
+                    }
+                    .padding()
+                    ZStack{
+                        VStack{
+                            Text("0.0")
+                                .font(.largeTitle)
+                            Text("km")
+                                .foregroundStyle(.gray)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 140)
+                        .foregroundStyle(.blue)
+                    }
+                    .padding()
+                }
             }
         }
         .padding()
@@ -42,7 +64,7 @@ final class StepCounterViewModel: ObservableObject {
     
     @Published var healthStore: HKHealthStore?
     @Published var error: Error? = nil
-    @Published var steps: String = ""
+    @Published var steps: Int = 0
     
     init() {
         if HKHealthStore.isHealthDataAvailable() {
@@ -81,7 +103,7 @@ final class StepCounterViewModel: ObservableObject {
             let stepCount = statistics.sumQuantity()?.doubleValue(for: .count())
             DispatchQueue.main.async {
                 if let stepCount, stepCount > 0 {
-                    self.steps = "\(stepCount) Steps Today"
+                    self.steps = Int(stepCount)
                 }
             }
         }
