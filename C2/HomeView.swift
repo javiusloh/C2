@@ -12,7 +12,7 @@ struct HomeView: View {
     var body: some View {
         ScrollView{
 
-            
+
             StepCounterView()
             /// LEADERBOARD CODE
             Text("Leaderboard")
@@ -20,9 +20,9 @@ struct HomeView: View {
                 .font(.largeTitle)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding()
-                
 
-            
+
+
             HStack {
                 Text(" ")
                     .frame(maxWidth: .infinity)
@@ -34,13 +34,13 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(Color.gray)
             }
-            
+
             HStack (){
                 Text("Darshan")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
-                
+
                 Text("7643")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -56,8 +56,8 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
-                
-                
+
+
                 Text("7281")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -73,7 +73,7 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
-                
+
                 Text("6725")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -89,7 +89,7 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
-                
+
                 Text("6283")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -98,13 +98,13 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
             }
-            
+
             HStack {
                 Text("You")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
                     .padding()
-                
+
                 Text("\(stepCount)")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 17))
@@ -115,10 +115,10 @@ struct HomeView: View {
 
 
             }
-            
-            
-            
-            
+
+
+
+
         }
     }
 }
