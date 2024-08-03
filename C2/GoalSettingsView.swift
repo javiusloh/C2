@@ -6,3 +6,26 @@
 //
 
 
+import SwiftUI
+
+struct GoalSettingsView: View {
+    var body: some View {
+        
+        NavigationStack{
+            VStack{
+                Text("")
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .multilineTextAlignment(.leading)
+            }
+            .navigationTitle("Goal settings")
+        }
+            
+    }
+}
+   
+
+
+
+#Preview {
+    GoalSettingsView()
+}
