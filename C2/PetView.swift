@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct PetView: View {
+    @Binding var dayLeft: Int
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if dayLeft != 0{
+            Text("Hungry in \(dayLeft) days")
+        } else if dayLeft == 0{
+            Text("Pet is hungry! Please feed him.")
+        }
+        if dayLeft >= 6{
+            Image("Happy Jaguar 2")
+                .resizable()
+                .frame(width: 350, height: 360)
+        } else if dayLeft >= 2{
+            Image ("Emotionless Jaguar 2")
+                .resizable()
+                .frame(width: 350, height: 360)
+        } else if dayLeft < 2{
+            Image ("Crying Jaguar 2")
+                .resizable()
+                .frame(width: 350, height: 360)
+        }
     }
 }
 
 #Preview {
-    PetView()
+    PetView(dayLeft: .constant(0))
 }

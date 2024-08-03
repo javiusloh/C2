@@ -9,8 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     @Binding var stepCount: Int
+    @Binding var dayLeft: Int
     var body: some View {
         ScrollView{
+            
+            PetView(dayLeft: $dayLeft)
 
 
             StepCounterView()
@@ -124,7 +127,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(stepCount: .constant(6924))
+    HomeView(stepCount: .constant(6924), dayLeft: .constant(0))
 }
 
 

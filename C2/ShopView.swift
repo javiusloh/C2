@@ -10,7 +10,7 @@
 //    @AppStorage ("dayLeft") var dayLeft = 0
 //    @AppStorage("stepLeft") private var stepLeft = 0
 //    @State var alertShownError = false
-//    
+//
 //    var body: some View {
 //        NavigationStack {
 //            VStack {
@@ -160,7 +160,6 @@ struct ShopView: View {
     @Binding var stepCount: Int
     @AppStorage("fish") var fish = 0
     @AppStorage("vegetable") var vegetable = 0
-    @AppStorage("dayLeft") var dayLeft = 0
     @AppStorage("stepLeft") private var stepLeft = 0
     @AppStorage("previousStepCount") private var previousStepCount = 0
     @State private var alertShownError = false
@@ -169,7 +168,7 @@ struct ShopView: View {
     @State private var hasRefreshBeenClicked = false // Track if reset has been clicked
     
     @State private var selectedFood: String? = nil
-
+    @Binding var dayLeft: Int
     var body: some View {
         NavigationStack {
             VStack {
@@ -321,5 +320,5 @@ struct ShopView: View {
 }
 
 #Preview {
-    ShopView(stepCount: .constant(6924))
+    ShopView(stepCount: .constant(6924), dayLeft: .constant(0))
 }
