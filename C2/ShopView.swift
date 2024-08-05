@@ -157,16 +157,17 @@ struct ShopView: View {
     @AppStorage("totalFood") var totalFood = 0
     @State private var alertShownFish = false
     @State private var alertShownVegetable = false
-    @Binding var stepCount: Int
     @AppStorage("fish") var fish = 0
     @AppStorage("vegetable") var vegetable = 0
-    @AppStorage("stepLeft") private var stepLeft = 0
     @AppStorage("previousStepCount") private var previousStepCount = 0
     @State private var alertShownError = false
     
     @State private var initialStepLeft: Int? = nil // Track initial stepLeft value
     @State private var hasRefreshBeenClicked = false // Track if reset has been clicked
-    
+    @Binding var stepCount: Int
+    @AppStorage("stepLeft") private var stepLeft = 0
+    @AppStorage("stepSync") private var stepSync = 0
+
     @State private var selectedFood: String? = nil
     @Binding var dayLeft: Int
     var body: some View {
@@ -200,6 +201,7 @@ struct ShopView: View {
                                     stepLeft -= 2000
                                     fish += 1
                                     dayLeft = fish + vegetable
+                                    totalFood += 1
                                 }
                             } label: {
                                 Text("Confirm")
@@ -242,6 +244,7 @@ struct ShopView: View {
                                     stepLeft -= 2000
                                     vegetable += 1
                                     dayLeft = fish + vegetable
+                                    totalFood += 1
                                 }
                             } label: {
                                 Text("Confirm")
@@ -277,11 +280,15 @@ struct ShopView: View {
                         dayLeft = 0
                         totalFood = 0
                     } label: {
-                        Text("Testing")
+                        Text("TEST")
                             .foregroundStyle(.gray)
                             .padding()
                     }
                     Button {
+                        
+//                        if stepSync != stepCount{
+//                            stepSync = stepCount
+//                        }
                         stepCount = previousStepCount
                         if stepCount > previousStepCount{
                             hasRefreshBeenClicked = true
@@ -315,7 +322,7 @@ struct ShopView: View {
     
     private func refreshSteps() {
         // Update stepLeft by adding the difference between stepCount and initialStepLeft
-        stepLeft = (stepLeft + stepCount)-(2000*(totalFood))
+        stepLeft = stepSync-(2000*(totalFood))
     }
 }
 
