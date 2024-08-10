@@ -26,7 +26,7 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            ShopView(stepCount: $viewModel.steps, dayLeft: $dayLeft)
+            ShopView(dayLeft: $dayLeft, stepCount: $viewModel.steps)
                 .tabItem{
                     Image(systemName: "cart")
                     Text("Shop")
