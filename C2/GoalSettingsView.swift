@@ -9,21 +9,37 @@
 import SwiftUI
 
 struct GoalSettingsView: View {
+    @AppStorage("stepGoal") var stepGoal = 10000
+    @AppStorage("DistanceGoal") var distanceGoal = 5.0
     var body: some View {
+        
+        Button {
+            distanceGoal = 5.0
+        }
+        label: {
+        
+         }
         
         NavigationStack{
             VStack{
-                Text("Steps")
-                    .font(.system(size: 17))
-                    .frame(maxWidth:.infinity,alignment: .topLeading) .padding()
-                    
+                Stepper("Steps: \(stepGoal)", onIncrement: {
+                    stepGoal += 500
+                }, onDecrement: {
+                    stepGoal -= 500
+                })
+                .padding()
                 
-                Text("Distance")
-                    .frame(maxWidth: .infinity,alignment: .topLeading)
-                    .padding()
-                           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 
-            
+               Stepper("Distance: \(distanceGoal, specifier: "%.2f")", onIncrement: {
+                    distanceGoal += 0.1
+                }, onDecrement: {
+                    distanceGoal -= 0.1
+                })
+                .padding()
+                
+                Spacer()
+                
+                
             }
             .navigationTitle("Goal settings")
         }
