@@ -1,136 +1,3 @@
-////
-////  HomeView.swift
-////  C2
-////
-////  Created by Javius Loh on 20/7/24.
-////
-//
-//import SwiftUI
-//
-//struct HomeView: View {
-//    @Binding var stepCount: Int
-//    @Binding var dayLeft: Int
-//    var body: some View {
-//        ScrollView{
-//            
-//            PetView(dayLeft: $dayLeft)
-//
-//
-//            StepCounterView()
-//            /// LEADERBOARD CODE
-//            Text("Leaderboard")
-//                .bold()
-//                .font(.largeTitle)
-//                .frame(maxWidth: .infinity,alignment: .leading)
-//                .padding()
-//
-//
-//
-//            HStack {
-//                Text(" ")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 20))
-//                Text("STEPS")
-//                    .frame(maxWidth: .infinity)
-//                    .foregroundStyle(Color.gray)
-//                Text("DISTANCE")
-//                    .frame(maxWidth: .infinity)
-//                    .foregroundStyle(Color.gray)
-//            }
-//
-//            HStack (){
-//                Text("Darshan")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//                    .padding()
-//
-//                Text("7643")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//                Text("4.8")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//
-//            }
-//            HStack {
-//                Text("Javius")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//                    .padding()
-//
-//
-//                Text("7281")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//                Text("3.5")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//
-//            }
-//            HStack {
-//                Text("John")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//                    .padding()
-//
-//                Text("6725")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//                Text("2.3")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//
-//        }
-//            HStack {
-//                Text("Max")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//                    .padding()
-//
-//                Text("6283")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//                Text("1.9")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//            }
-//
-//            HStack {
-//                Text("You")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//                    .padding()
-//
-//                Text("\(stepCount)")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//                Text("0.0")
-//                    .frame(maxWidth: .infinity)
-//                    .font(.system(size: 17))
-//
-//
-//            }
-//
-//
-//
-//
-//        }
-//    }
-//}
-//
-//#Preview {
-//    HomeView(stepCount: .constant(6924), dayLeft: .constant(0))
-//}
-//
-//
 import SwiftUI
 
 // Enum to represent different user states
@@ -198,56 +65,67 @@ struct HomeView: View {
     @Binding var dayLeft: Int
     
     var body: some View {
-        ScrollView {
-            Text("\(fish)")
-            PetView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
-            StepCounterView() // Placeholder for your step counter view
-            
-            Text("Leaderboard")
-                .bold()
-                .font(.largeTitle)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-            
-            HStack {
-                Text(" ")
-                    .frame(maxWidth: .infinity)
-                    .font(.system(size: 20))
-                Text("STEPS")
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(Color.gray)
-                Text("DISTANCE")
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(Color.gray)
-            }
-            
-            ForEach(leaderboardViewModel.users) { user in
+        NavigationStack{
+            ScrollView {
+                Text("\(fish)")
+                PetView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
+                StepCounterView() // Placeholder for your step counter view
+                
+                Text("Leaderboard")
+                    .bold()
+                    .font(.largeTitle)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                
                 HStack {
-                    Text(user.name)
+                    Text(" ")
                         .frame(maxWidth: .infinity)
-                        .font(.system(size: 17))
-                        .padding()
-                    
-                    Text("\(user.stepCount)")
+                        .font(.system(size: 20))
+                    Text("STEPS")
                         .frame(maxWidth: .infinity)
-                        .font(.system(size: 17))
-                    
-                    Text(String(format: "%.1f", user.distance))
+                        .foregroundStyle(Color.gray)
+                    Text("DISTANCE")
                         .frame(maxWidth: .infinity)
-                        .font(.system(size: 17))
+                        .foregroundStyle(Color.gray)
                 }
-                .padding(.vertical, 2)
+                
+                ForEach(leaderboardViewModel.users) { user in
+                    HStack {
+                        Text(user.name)
+                            .frame(maxWidth: .infinity)
+                            .font(.system(size: 17))
+                            .padding()
+                        
+                        Text("\(user.stepCount)")
+                            .frame(maxWidth: .infinity)
+                            .font(.system(size: 17))
+                        
+                        Text(String(format: "%.1f", user.distance))
+                            .frame(maxWidth: .infinity)
+                            .font(.system(size: 17))
+                    }
+                    .padding(.vertical, 2)
+                }
+                .onAppear {
+                    leaderboardViewModel.updateUser(stepCount: stepCount)
+                }
+                .onChange(of: stepCount) { newValue in
+                    leaderboardViewModel.updateUser(stepCount: newValue)
+                }
             }
-            .onAppear {
-                leaderboardViewModel.updateUser(stepCount: stepCount)
-            }
-            .onChange(of: stepCount) { newValue in
-                leaderboardViewModel.updateUser(stepCount: newValue)
+            .navigationTitle("Home")
+            .toolbar{
+                ToolbarItem(){
+                    Button{
+                        GoalSettingsView()
+                    }label: {
+                        Image(systemName: "gear")
+                    }
+                }
             }
         }
     }
 }
-
 #Preview {
     HomeView(stepCount: .constant(6924), fish: .constant(0),  vegetable: .constant(0), dayLeft: .constant(0))
 }
