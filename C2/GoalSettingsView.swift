@@ -13,19 +13,46 @@ struct GoalSettingsView: View {
         
         NavigationStack{
             VStack{
-                Text("")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .multilineTextAlignment(.leading)
+                Text("Steps")
+                    .font(.system(size: 17))
+                    .frame(maxWidth:.infinity,alignment: .topLeading) .padding()
+                    
+                
+                Text("Distance")
+                    .frame(maxWidth: .infinity,alignment: .topLeading)
+                    .padding()
+                           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                
+            
             }
             .navigationTitle("Goal settings")
         }
             
     }
 }
-   
 
+        #Preview {
+        GoalSettingsView()
+    }
+    
+import SwiftUI
 
+struct GoalSettings: View {
+    @State private var currentNumber = 0
 
-#Preview {
-    GoalSettingsView()
+    var body: some View {
+        VStack {
+            Button(action: {
+                currentNumber += 1
+            }) {
+                Text("\(currentNumber)")
+                    .font(.largeTitle)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+        }
+    }
 }
+
