@@ -15,26 +15,19 @@ struct GoalSettingsView: View {
         
         Button {
             distanceGoal = 5.0
+            stepGoal = 10000
         }
         label: {
-        
+            Text(".")
          }
         
         NavigationStack{
             VStack{
-                Stepper("Steps: \(stepGoal)", onIncrement: {
-                    stepGoal += 500
-                }, onDecrement: {
-                    stepGoal -= 500
-                })
+                Stepper("Steps: \(stepGoal)", value: $stepGoal, in: 1...100000, step: 500)
                 .padding()
                 
-                
-               Stepper("Distance: \(distanceGoal, specifier: "%.2f")", onIncrement: {
-                    distanceGoal += 0.1
-                }, onDecrement: {
-                    distanceGoal -= 0.1
-                })
+                Stepper("Distance: \(distanceGoal.formatted())", value: $distanceGoal, in: 1...500, step: 0.1)
+
                 .padding()
                 
                 Spacer()
