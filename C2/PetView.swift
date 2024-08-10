@@ -39,16 +39,17 @@ struct PetView: View {
                 // Handle button press action if needed
             } label: {
                 Menu {
-                    Button("Vegetable"){
-                        if dayLeft <= 0{
+                    Button("Vegetable: \(vegetable)"){
+                        if vegetable <= 0{
                             alertShownError = true
                         } else {
                             alertShownVegetable = true
+                            selectedFood = "Vegetable"
+                            dayLeft -= 1
+                            // Handle selection of Vegetable
+                            print("Vegetable selected")
                         }
-                        selectedFood = "Vegetable"
-                        dayLeft -= 1
-                        // Handle selection of Vegetable
-                        print("Vegetable selected")
+
                     }
 //                        .alert("You do not have enough steps to buy this item ", isPresented: $alertShownError, actions: {
 //                            Button {
@@ -56,25 +57,27 @@ struct PetView: View {
 //                                Text("Dismiss")
 //                            }
 //                        })
-                        .alert("Are you sure you want to feed it a fish? ", isPresented: $alertShownVegetable, actions: {
-                            Button {
-                                vegetable -= 1
-                            } label: {
-                                Text("Confirm")
-                            }
-                        })
+//                        .alert("Are you sure you want to feed it a vegetable? ", isPresented: $alertShownVegetable, actions: {
+//                            Button {
+//                                vegetable -= 1
+//                                dayLeft += 5
+//                            } label: {
+//                                Text("Confirm")
+//                            }
+//                        })
                     
-                    Button("Fish") {
-                        if dayLeft <= 0{
+                    Button("Fish: \(fish)") {
+                        if fish <= 0{
                             alertShownError = true
                         } else {
                             alertShownFish = true
+                            selectedFood = "Fish"
+                            fish -= 1
+                            // Handle selection of Fish
+                            print("Fish selected")
                         }
-                        selectedFood = "Fish"
-                        dayLeft -= 1
-                        // Handle selection of Fish
-                        print("Fish selected")
-                    }
+                        }
+
                 } label: {
                     Text("Feed!")
                         .foregroundStyle(.white)
@@ -84,19 +87,34 @@ struct PetView: View {
                         .cornerRadius(16)
                         .padding()
                 }
-//                .alert("You do not have enough steps to buy this item ", isPresented: $alertShownError, actions: {
-//                    Button {
-//                    } label: {
-//                        Text("Dismiss")
-//                    }
-//                })
+                .alert("You do not have enough steps to buy this item ", isPresented: $alertShownError, actions: {
+                    Button {
+                    } label: {
+                        Text("Dismiss")
+                    }
+                })
                 .alert("Are you sure you want to feed it a fish? ", isPresented: $alertShownFish, actions: {
                     Button {
-                        vegetable -= 1
+                        fish -= 1
                     } label: {
                         Text("Confirm")
                     }
                 })
+                .alert("You do not have enough steps to buy this item ", isPresented: $alertShownError, actions: {
+                    Button {
+                    } label: {
+                        Text("Dismiss")
+                    }
+                })
+                .alert("Are you sure you want to feed it a vegetable? ", isPresented: $alertShownVegetable, actions: {
+                    Button {
+                        vegetable -= 1
+                        dayLeft += 5
+                    } label: {
+                        Text("Confirm")
+                    }
+                })
+
             }
         }
     }
