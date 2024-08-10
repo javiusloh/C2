@@ -69,7 +69,7 @@ struct HomeView: View {
             ScrollView {
                 Text("\(fish)")
                 PetView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
-                StepCounterView() // Placeholder for your step counter view
+                StepCounterView()
                 
                 Text("Leaderboard")
                     .bold()

@@ -10,11 +10,21 @@ import HealthKit
 
 struct StepCounterView: View {
     @StateObject private var viewModel = StepCounterViewModel()
-    @State private var stepsGoalPercentage = $stepCount / $stepGoal
-//    @State private var distanceGoalPercentage =
+//    @AppStorage("stepGoal") var stepGoal: Int = 10000
+//    @AppStorage("distanceGoal") var distanceGoal: Double = 5.0
+//    @AppStorage("userDistance") var storedDistance: Double = 0.0
+//    @AppStorage("userSteps") var storedSteps: Int = 0
     
-        
     var body: some View {
+        
+        let userDefaults = UserDefaults.standard
+        let stepGoal = userDefaults.integer(forKey: "stepGoal")
+        let distanceGoal = userDefaults.double(forKey: "distanceGoal")
+        let userSteps = userDefaults.double(forKey: "userSteps")
+        let userDistance = userDefaults.double(forKey: "userDistance")
+        
+        // stepGoal and distanceGoal must not be 0 or else divide by zero error
+        
         VStack {
             if viewModel.error != nil {
                 ContentUnavailableView("No Steps Data", systemImage: "figure.walk")
@@ -37,7 +47,7 @@ struct StepCounterView: View {
                             .frame(width: 130, height: 130)
                             .rotationEffect(.degrees(270))
                         Circle()
-                            .trim(from: 0, to: 0.4)
+                            .trim(from: 0, to: Double(userSteps)/Double(stepGoal))
                             .stroke(
                                 Color.blue, style: StrokeStyle(
                                 lineWidth: 10,
@@ -65,7 +75,7 @@ struct StepCounterView: View {
                             .frame(width: 130, height: 130)
                             .rotationEffect(.degrees(270))
                         Circle()
-                            .trim(from: 0, to: 0.6)
+                            .trim(from: 0, to: userDistance/distanceGoal)
                             .stroke(
                                 Color.blue, style: StrokeStyle(
                                 lineWidth: 10,
@@ -82,7 +92,7 @@ struct StepCounterView: View {
         .padding()
         .task {
             await viewModel.requestAuth()
-            try? await viewModel.fetchTodaySteps()
+            try? await viewModel.fetchTodayStepsAndDistance()
         }
     }
 }
@@ -96,48 +106,64 @@ final class StepCounterViewModel: ObservableObject {
     @Published var healthStore: HKHealthStore?
     @Published var error: Error? = nil
     @Published var steps: Int = 0
+    @Published var distance: Double = 0.0
+    
+    @AppStorage("userDistance") var storedDistance: Double = 0.0
+    @AppStorage("userSteps") var storedSteps: Int = 0
     
     init() {
         if HKHealthStore.isHealthDataAvailable() {
             healthStore = HKHealthStore()
+            steps = storedSteps
+            distance = storedDistance
         } else {
             error = StepCounterError.couldNotFetchHealthStore
         }
     }
     
-    func requestAuth() async { // second step
+    func requestAuth() async {
         guard let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount),
+              let distanceType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning),
               let healthStore else { return }
         
         do {
-            try await healthStore.requestAuthorization(toShare: [], read: [stepCountType])
+            try await healthStore.requestAuthorization(toShare: [], read: [stepCountType, distanceType])
         } catch {
             self.error = error
         }
     }
     
-    func fetchTodaySteps() async throws {
+    func fetchTodayStepsAndDistance() async throws {
         guard let healthStore else { return }
         
-        let startDate = Calendar.current.date(bySettingHour: 1, minute: 0, second: 0, of: Date())!
-        let healthStepType = HKQuantityType(.stepCount)
+        let startDate = Calendar.current.startOfDay(for: Date())
+        let endDate = Date()
         
-        let sampleDateRange = HKQuery.predicateForSamples(withStart: startDate, end: Date())
+        let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        let distanceType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
         
-        let sample = HKSamplePredicate.quantitySample(type: healthStepType, predicate: sampleDateRange)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         
-        let stepsQuery = HKStatisticsCollectionQueryDescriptor(predicate: sample, options: .mostRecent, anchorDate: Date(), intervalComponents: DateComponents(day:1))
-        
-        let stepsData = try await stepsQuery.result(for: healthStore)
-        
-        stepsData.enumerateStatistics(from: startDate, to: Date()) { statistics, pointer in
-            let stepCount = statistics.sumQuantity()?.doubleValue(for: .count())
+        let stepsQuery = HKStatisticsQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, statistics, error in
+            guard let statistics = statistics, let sum = statistics.sumQuantity() else { return }
             DispatchQueue.main.async {
-                if let stepCount, stepCount > 0 {
-                    self.steps = Int(stepCount)
-                }
+                let stepCount = Int(sum.doubleValue(for: .count()))
+                self.steps = stepCount
+                self.storedSteps = stepCount
             }
         }
+        
+        let distanceQuery = HKStatisticsQuery(quantityType: distanceType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, statistics, error in
+            guard let statistics = statistics, let sum = statistics.sumQuantity() else { return }
+            DispatchQueue.main.async {
+                let distanceValue = sum.doubleValue(for: .meterUnit(with: .kilo))
+                self.distance = distanceValue
+                self.storedDistance = distanceValue
+            }
+        }
+        
+        healthStore.execute(stepsQuery)
+        healthStore.execute(distanceQuery)
     }
 }
 
