@@ -199,8 +199,8 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            
-            PetView(fish: .constant(0), vegetable: .constant(0), dayLeft: .constant(0))
+            Text("\(fish)")
+            PetView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
             StepCounterView() // Placeholder for your step counter view
             
             Text("Leaderboard")
