@@ -11,6 +11,10 @@ struct ContentView: View {
     @State var stepsGoal = 0
     @AppStorage ("stepCount") var stepCount = 0
     @State var distanceGoal = 0.0
+    @AppStorage ("distanceCount") var distanceCount: Double = getDistance(stepCount)
+    func getDistance(Double: stepCount){
+        distanceCount = Double(stepCount) * Double(0.71)
+    }
     @AppStorage("dayLeft") var dayLeft = 0
     
     @StateObject private var viewModel = StepCounterViewModel()

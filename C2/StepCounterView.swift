@@ -10,8 +10,10 @@ import HealthKit
 
 struct StepCounterView: View {
     @StateObject private var viewModel = StepCounterViewModel()
+    @State private var stepsGoalPercentage = $stepCount / $stepGoal
+//    @State private var distanceGoalPercentage =
     
-    
+        
     var body: some View {
         VStack {
             if viewModel.error != nil {
@@ -26,6 +28,15 @@ struct StepCounterView: View {
                                 .foregroundStyle(.gray)
                         }
                         Circle()
+                            .stroke(
+                                Color.gray.opacity(0.4), style: StrokeStyle(
+                                lineWidth: 10,
+                                lineCap: .round
+                                )
+                            )
+                            .frame(width: 130, height: 130)
+                            .rotationEffect(.degrees(270))
+                        Circle()
                             .trim(from: 0, to: 0.4)
                             .stroke(
                                 Color.blue, style: StrokeStyle(
@@ -33,6 +44,7 @@ struct StepCounterView: View {
                                 lineCap: .round
                                 )
                             )
+                            .frame(width: 130, height: 130)
                             .rotationEffect(.degrees(270))
                     }
                     .padding()
@@ -43,11 +55,25 @@ struct StepCounterView: View {
                             Text("km")
                                 .foregroundStyle(.gray)
                         }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 140)
-                        .foregroundStyle(.blue)
+                        Circle()
+                            .stroke(
+                                Color.gray.opacity(0.4), style: StrokeStyle(
+                                lineWidth: 10,
+                                lineCap: .round
+                                )
+                            )
+                            .frame(width: 130, height: 130)
+                            .rotationEffect(.degrees(270))
+                        Circle()
+                            .trim(from: 0, to: 0.6)
+                            .stroke(
+                                Color.blue, style: StrokeStyle(
+                                lineWidth: 10,
+                                lineCap: .round
+                                )
+                            )
+                            .frame(width: 130, height: 130)
+                            .rotationEffect(.degrees(270))
                     }
                     .padding()
                 }
