@@ -11,6 +11,7 @@ import HealthKit
 struct StepCounterView: View {
     @StateObject private var viewModel = StepCounterViewModel()
     
+    
     var body: some View {
         VStack {
             if viewModel.error != nil {
@@ -24,11 +25,15 @@ struct StepCounterView: View {
                             Text("steps")
                                 .foregroundStyle(.gray)
                         }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 140)
-                        .foregroundStyle(.blue)
+                        Circle()
+                            .trim(from: 0, to: 0.4)
+                            .stroke(
+                                Color.blue, style: StrokeStyle(
+                                lineWidth: 10,
+                                lineCap: .round
+                                )
+                            )
+                            .rotationEffect(.degrees(270))
                     }
                     .padding()
                     ZStack{
