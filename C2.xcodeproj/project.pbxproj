@@ -67,11 +67,11 @@
 		3CEB7F4E2C4B55D400BDC3AE /* C2 */ = {
 			isa = PBXGroup;
 			children = (
-				D9AB77632C54973000DDD72B /* GoalSettingsView.swift */,
 				D9BD1B9B2C54956B00D90340 /* C2.entitlements */,
 				D9BD1B9A2C5494AB00D90340 /* Info.plist */,
 				3CEB7F4F2C4B55D400BDC3AE /* C2App.swift */,
 				3CEB7F512C4B55D400BDC3AE /* ContentView.swift */,
+				D9AB77632C54973000DDD72B /* GoalSettingsView.swift */,
 				D9BD1B9C2C5495E900D90340 /* StepCounterView.swift */,
 				3CEB7F5D2C4B571E00BDC3AE /* HomeView.swift */,
 				3CEB7F5F2C4B572600BDC3AE /* ShopView.swift */,

@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State var stepsGoal = 0
     @AppStorage ("stepCount") var stepCount = 0
-    @State var distanceGoal = 0.0
+    @State var distanceGoal = 10
+    @State var distanceCount = 0.5
     @AppStorage("dayLeft") var dayLeft = 0
     
     @StateObject private var viewModel = StepCounterViewModel()
@@ -30,7 +31,7 @@ struct ContentView: View {
         }
         .task {
             await viewModel.requestAuth()
-            try? await viewModel.fetchTodaySteps()
+            try? await viewModel.fetchTodayStepsAndDistance()
         }
     }
 }

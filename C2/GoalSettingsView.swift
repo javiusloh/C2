@@ -9,17 +9,18 @@
 import SwiftUI
 
 struct GoalSettingsView: View {
-    @AppStorage("stepGoal") var stepGoal = 10000
-    @AppStorage("DistanceGoal") var distanceGoal = 5.0
+    @AppStorage("stepGoal") var stepGoal: Int = 10000
+    @AppStorage("distanceGoal") var distanceGoal: Double = 5.0
+    
     var body: some View {
         
-        Button {
-            distanceGoal = 5.0
-            stepGoal = 10000
-        }
-        label: {
-            Text(".")
-         }
+//        Button {
+//            distanceGoal = 5.0
+//            stepGoal = 10000
+//        }
+//        label: {
+//            Text(".")
+//         }
         
         NavigationStack{
             VStack{
@@ -40,28 +41,6 @@ struct GoalSettingsView: View {
     }
 }
 
-        #Preview {
-        GoalSettingsView()
-    }
-    
-import SwiftUI
-
-struct GoalSettings: View {
-    @State private var currentNumber = 0
-
-    var body: some View {
-        VStack {
-            Button(action: {
-                currentNumber += 1
-            }) {
-                Text("\(currentNumber)")
-                    .font(.largeTitle)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-        }
-    }
+#Preview {
+    GoalSettingsView()
 }
-
