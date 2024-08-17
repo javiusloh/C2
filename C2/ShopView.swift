@@ -2,8 +2,8 @@ import SwiftUI
 
 struct ShopView: View {
     @AppStorage("totalFood") var totalFood = 0
-    @AppStorage("fish") var fish = 0
-    @AppStorage("vegetable") var vegetable = 0
+    @Binding var fish: Int
+    @Binding var vegetable: Int
     @State private var selectedFood: String? = nil
     @Binding var dayLeft: Int
         
@@ -168,5 +168,5 @@ struct ShopView: View {
 }
 
 #Preview {
-    ShopView(dayLeft: .constant(0), stepCount: .constant(6924))
+    ShopView(fish: .constant(6924), vegetable: .constant(0), dayLeft: .constant(0), stepCount: .constant(0))
 }

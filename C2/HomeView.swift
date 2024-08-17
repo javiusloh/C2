@@ -18,7 +18,6 @@ struct User: Identifiable {
     var distance: Double
 }
 
-// ObservableObject to manage leaderboard data
 class LeaderboardViewModel: ObservableObject {
     @Published var users: [User] = [
         User(name: "Hunter", stepCount: 7643, distance: 4.8),
@@ -27,11 +26,16 @@ class LeaderboardViewModel: ObservableObject {
         User(name: "Zara", stepCount: 6283, distance: 1.9)
     ]
     
+    @Published var storedDistance: Double = 0.0  // This should be updated elsewhere in your app
+    
     func updateUser(stepCount: Int) {
         if let index = users.firstIndex(where: { $0.name == "You" }) {
+            // Update existing user
             users[index].stepCount = stepCount
+            users[index].distance = storedDistance
         } else {
-            let newUser = User(name: "You", stepCount: stepCount, distance: 0.0)
+            // Add new user with current storedDistance
+            let newUser = User(name: "You", stepCount: stepCount, distance: storedDistance)
             users.append(newUser)
         }
         users.sort { $0.stepCount > $1.stepCount }
@@ -52,22 +56,20 @@ class LeaderboardViewModel: ObservableObject {
         }
     }
 }
-
+import SwiftUI
 
 struct HomeView: View {
     @Binding var stepCount: Int
     @StateObject private var leaderboardViewModel = LeaderboardViewModel()
-    
-    @State private var selectedFood: String? = nil
     
     @Binding var fish: Int
     @Binding var vegetable: Int
     @Binding var dayLeft: Int
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ScrollView {
-                Text("\(fish)")
+                Text("Fish: \(fish)")
                 PetView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
                 StepCounterView()
                 
@@ -114,11 +116,12 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Home")
-            .toolbar{
-                ToolbarItem(){
-                    Button{
-                        GoalSettingsView()
-                    }label: {
+            .toolbar {
+                ToolbarItem() {
+                    Button {
+                        // Navigate to GoalSettingsView
+                        // (Assuming you will implement navigation or presentation logic here)
+                    } label: {
                         Image(systemName: "gear")
                     }
                 }
@@ -126,8 +129,7 @@ struct HomeView: View {
         }
     }
 }
+
 #Preview {
-    HomeView(stepCount: .constant(6924), fish: .constant(0),  vegetable: .constant(0), dayLeft: .constant(0))
+    HomeView(stepCount: .constant(6924), fish: .constant(0), vegetable: .constant(0), dayLeft: .constant(0))
 }
-
-

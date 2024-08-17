@@ -60,7 +60,7 @@ struct StepCounterView: View {
                     .padding()
                     ZStack{
                         VStack{
-                            Text("0.0")
+                            Text(String(format: "%.1f", viewModel.storedDistance))
                                 .font(.largeTitle)
                             Text("km")
                                 .foregroundStyle(.gray)

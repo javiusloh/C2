@@ -13,17 +13,19 @@ struct ContentView: View {
     @State var distanceGoal = 10
     @State var distanceCount = 0.5
     @AppStorage("dayLeft") var dayLeft = 0
+    @AppStorage ("vegetable") var vegetable = 0
+    @AppStorage ("fish") var fish = 0
     
     @StateObject private var viewModel = StepCounterViewModel()
     var body: some View {
         
         TabView{
-            HomeView(stepCount: $viewModel.steps, fish: .constant(0), vegetable: .constant(0), dayLeft: $dayLeft)
+            HomeView(stepCount: $viewModel.steps, fish: $dayLeft, vegetable: $fish, dayLeft: $vegetable)
                 .tabItem{
                     Image(systemName: "house")
                     Text("Home")
                 }
-            ShopView(dayLeft: $dayLeft, stepCount: $viewModel.steps)
+            ShopView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft, stepCount: $viewModel.steps)
                 .tabItem{
                     Image(systemName: "cart")
                     Text("Shop")

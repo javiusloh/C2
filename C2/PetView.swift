@@ -87,7 +87,7 @@ struct PetView: View {
                         .cornerRadius(16)
                         .padding()
                 }
-                .alert("You do not have enough steps to buy this item ", isPresented: $alertShownError, actions: {
+                .alert("You do not have enough food", isPresented: $alertShownError, actions: {
                     Button {
                     } label: {
                         Text("Dismiss")
@@ -100,7 +100,7 @@ struct PetView: View {
                         Text("Confirm")
                     }
                 })
-                .alert("You do not have enough steps to buy this item ", isPresented: $alertShownError, actions: {
+                .alert("You do not have enough food", isPresented: $alertShownError, actions: {
                     Button {
                     } label: {
                         Text("Dismiss")
