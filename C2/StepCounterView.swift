@@ -105,7 +105,7 @@ final class StepCounterViewModel: ObservableObject {
     
     @Published var healthStore: HKHealthStore?
     @Published var error: Error? = nil
-    @Published var steps: Int = 0
+    @Published var steps: Int = 6000
     @Published var distance: Double = 0.0
     
     @AppStorage("userDistance") var storedDistance: Double = 0.0
@@ -150,6 +150,8 @@ final class StepCounterViewModel: ObservableObject {
                 let stepCount = Int(sum.doubleValue(for: .count()))
                 self.steps = stepCount
                 self.storedSteps = stepCount
+//                self.steps = 6000
+//                self.storedSteps = 6000
             }
         }
         

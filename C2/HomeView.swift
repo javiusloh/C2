@@ -61,7 +61,7 @@ import SwiftUI
 struct HomeView: View {
     @Binding var stepCount: Int
     @StateObject private var leaderboardViewModel = LeaderboardViewModel()
-    
+    @State var gearShown = false
     @Binding var fish: Int
     @Binding var vegetable: Int
     @Binding var dayLeft: Int
@@ -69,7 +69,6 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                Text("Fish: \(fish)")
                 PetView(fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
                 StepCounterView()
                 
@@ -119,11 +118,13 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem() {
                     Button {
-                        // Navigate to GoalSettingsView
-                        // (Assuming you will implement navigation or presentation logic here)
+                        gearShown = true
                     } label: {
                         Image(systemName: "gear")
                     }
+                    .sheet(isPresented: $gearShown, content: {
+                        GoalSettingsView()
+                    })
                 }
             }
         }

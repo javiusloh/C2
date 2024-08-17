@@ -45,7 +45,6 @@ struct PetView: View {
                         } else {
                             alertShownVegetable = true
                             selectedFood = "Vegetable"
-                            dayLeft -= 1
                             // Handle selection of Vegetable
                             print("Vegetable selected")
                         }
@@ -72,7 +71,6 @@ struct PetView: View {
                         } else {
                             alertShownFish = true
                             selectedFood = "Fish"
-                            fish -= 1
                             // Handle selection of Fish
                             print("Fish selected")
                         }
@@ -96,6 +94,7 @@ struct PetView: View {
                 .alert("Are you sure you want to feed it a fish? ", isPresented: $alertShownFish, actions: {
                     Button {
                         fish -= 1
+                        dayLeft -= 1
                     } label: {
                         Text("Confirm")
                     }
@@ -109,7 +108,7 @@ struct PetView: View {
                 .alert("Are you sure you want to feed it a vegetable? ", isPresented: $alertShownVegetable, actions: {
                     Button {
                         vegetable -= 1
-                        dayLeft += 5
+                        dayLeft -= 1
                     } label: {
                         Text("Confirm")
                     }

@@ -20,7 +20,7 @@ struct ContentView: View {
     var body: some View {
         
         TabView{
-            HomeView(stepCount: $viewModel.steps, fish: $dayLeft, vegetable: $fish, dayLeft: $vegetable)
+            HomeView(stepCount: $viewModel.steps, fish: $fish, vegetable: $vegetable, dayLeft: $dayLeft)
                 .tabItem{
                     Image(systemName: "house")
                     Text("Home")
